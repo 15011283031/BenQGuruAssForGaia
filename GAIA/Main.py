@@ -63,7 +63,8 @@ class Show():
         Master.deiconify()
 '''
  
-class Create_main_window:
+class Create_main_window:  
+    
     def __init__(self,Master):
         center_window(Master, 1366, 768)  # 设置窗口居中，设置宽度和高度       
         Master.title("BenQGuru eHR Ass For Gaia7303")
@@ -159,6 +160,7 @@ class Create_main_window:
         scrolly_showALLSP.config(command=lb.yview)    
 #读取所有SP
 
+
 #获取写入地址            
         self.label_option = tk.Label(self.mainframe,text='写入文件地址')
         self.label_option.grid(row=200,column=0,sticky=tk.W)
@@ -168,11 +170,14 @@ class Create_main_window:
         #self.entry_rootfile.place(x=50,y=50)
         self.entry_rootfile.grid(row=201,column=0,sticky=tk.W+tk.E)
         # 设置按钮
-        self.but_readShowAllSP = tk.Button(self.mainframe, text="读取SP脚本", width=10,command=self.readShowALLSP(db_ShowALLSP))#
+        
+
+        self.but_readShowAllSP = tk.Button(self.mainframe, text="读取SP脚本", width=10,command=lambda:self.readShowALLSP(db_ShowALLSP))#
         self.but_readShowAllSP.grid(row=202, column=0,sticky=tk.W+tk.E+tk.N)
         self.CONframe.place(x=0,y=0)
         self.mainframe.place(x=0,y=20)
-         
+
+                 
     def readShowALLSP(self,db_ShowALLSP):
         mb.showinfo('SP开始提取')
         db_SPContentList = []
@@ -195,12 +200,14 @@ class Create_main_window:
         print(filetruepath_showALLSP)
         fileobj = open( filetruepath_showALLSP, 'w')
         for item in db_SPContentList:
-            fileobj.write(item)
+            fileobj.write(item)  
                 
 if __name__ == "__main__":
     count = 0
     root1 = tk.Tk()
+    print(1)
     main_window = Create_main_window(root1)
+    print(2)
     root1.mainloop()
      
         
